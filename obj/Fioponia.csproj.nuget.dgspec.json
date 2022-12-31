@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\Dima\\Desktop\\Projects\\Fioponia\\Fioponia.csproj": {
-      "version": "0.0.1",
+      "version": "0.0.2",
       "restore": {
         "projectUniqueName": "C:\\Users\\Dima\\Desktop\\Projects\\Fioponia\\Fioponia.csproj",
         "projectName": "Fioponia",
@@ -51,6 +51,10 @@
             "MonoGame.Framework.DesktopGL": {
               "target": "Package",
               "version": "[3.8.1.303, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
             }
           },
           "imports": [
