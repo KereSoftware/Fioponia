@@ -1,4 +1,6 @@
 ﻿using Fioponia.Scripts.Engine;
+using Fioponia.Scripts.Game;
+using Fioponia.Scripts.Game.Entities;
 using Fioponia.Scripts.Loaders;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,6 +13,8 @@ namespace Fioponia
     {
         #region Instances
         public static Main instance;
+        public static Segment instanceSegment;
+        public static Player instancePlayer;
         #endregion
 
         #region Framerate
@@ -50,10 +54,9 @@ namespace Fioponia
 
             base.Initialize();
 
-            testObject = new GameObject() { datamod = "core", path = "graphics/test/test" };
+            instanceSegment = new Segment();
+            instancePlayer = new Player() { name = "player", datamod = "core", path = "graphics/test/testPlayer" };
         }
-
-        GameObject testObject;
 
         protected override void LoadContent()
         {
@@ -63,7 +66,14 @@ namespace Fioponia
         #region Engine Update & Draw
         public void EngineUpdate()
         {
-
+            if (instanceSegment != null)
+            {
+                instanceSegment.Update();
+                if (instancePlayer != null)
+                {
+                    instancePlayer.Update();
+                }
+            }
         }
         public void EngineDraw()
         {
@@ -74,7 +84,13 @@ namespace Fioponia
             GraphicsDevice.Clear(Color.Gray);
 
             _spriteBatch.Begin();
-            DrawObject(testObject);
+            if (instanceSegment != null)
+            {
+                if (instancePlayer != null)
+                {
+                    DrawObject(instancePlayer);
+                }
+            }
             _spriteBatch.End();
         }
         public void DrawObject(GameObject obj)
